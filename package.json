@@ -1,0 +1,19 @@
+{
+  "name": "kmac-soundboard",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "ramda": "^0.25.0",
+    "ramda-fantasy": "^0.8.0",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "react-fastclick": "^3.0.2",
+    "react-scripts": "1.0.17"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  }
+}
