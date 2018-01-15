@@ -5,6 +5,11 @@ import KmacFace from "./kmacFace"
 class AudioButton extends Component {
   state = { isLoading: false, isPlaying: false, volume: 0 }
 
+  componentDidMount = () => {
+    this.analyser = this.props.audioContext.createScriptProcessor(1024, 1, 1)
+    this.analyser.onaudioprocess = this.onAudioProcess
+  }
+
   onAudioProcess = e => {
     var out = e.outputBuffer.getChannelData(0)
     var int = e.inputBuffer.getChannelData(0)
@@ -17,27 +22,35 @@ class AudioButton extends Component {
   }
 
   onClick = () => {
-    const { audioContext, soundUrl } = this.props
-    var analyser = audioContext.createScriptProcessor(1024, 1, 1)
+    if (this.state.buffer) {
+      this.playBuffer(this.props.audioContext, this.analyser)(this.state.buffer)
+      return
+    }
+    this.loadBuffer()
+  }
 
-    analyser.onaudioprocess = this.onAudioProcess
+  loadBuffer = () => {
+    const { audioContext, soundUrl } = this.props
 
     this.setState({ isLoading: true })
     getBufferFromURL(audioContext, soundUrl)
-      .map(playSound(audioContext, analyser))
-      .fork(
-        e => console.log(e),
-        buffer => {
-          this.setState({ isLoading: false, isPlaying: true })
-          const source = buffer.runIO()
-          source.onended = () => {
-            this.setState({ isPlaying: false })
-            source.disconnect(analyser)
-            analyser.disconnect(audioContext.destination)
-          }
-          requestAnimationFrame(this.loop)
-        }
-      )
+      .map(playSound(audioContext, this.analyser))
+      .map(buffer => {
+        this.setState({ buffer })
+        return buffer
+      })
+      .fork(e => console.log(e), this.playBuffer(audioContext, this.analyser))
+  }
+
+  playBuffer = (audioContext, analyser) => buffer => {
+    this.setState({ isLoading: false, isPlaying: true })
+    const source = buffer.runIO()
+    source.onended = () => {
+      this.setState({ isPlaying: false })
+      source.disconnect(analyser)
+      analyser.disconnect(audioContext.destination)
+    }
+    requestAnimationFrame(this.loop)
   }
 
   loop = () => {

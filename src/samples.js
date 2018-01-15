@@ -40,64 +40,64 @@ const samples = [
     url: "/audio/am only kiddin.mp3"
   },
   {
-    description: "DOWWWWW",
-    url: "/audio/dow.mp3"
+    description: "ARGHHH!",
+    url: "/audio/argh.mp3"
   },
   {
-    description: "DOWWWWW",
-    url: "/audio/dow.mp3"
+    description: "Sleeping",
+    url: "/audio/sleeping.mp3"
   },
   {
-    description: "DOWWWWW",
-    url: "/audio/dow.mp3"
+    description: "Eating",
+    url: "/audio/eating.mp3"
   },
   {
-    description: "DOWWWWW",
-    url: "/audio/dow.mp3"
+    description: "Crying",
+    url: "/audio/crying.mp3"
   },
   {
-    description: "DOWWWWW",
-    url: "/audio/dow.mp3"
+    description: "EUUGGHHH",
+    url: "/audio/euugghh.mp3"
   },
   {
-    description: "DOWWWWW",
-    url: "/audio/dow.mp3"
+    description: "He's a good boy",
+    url: "/audio/hes a good boy.mp3"
   },
   {
-    description: "DOWWWWW",
-    url: "/audio/dow.mp3"
+    description: "I made a video for my friends",
+    url: "/audio/i made a video for my friends.mp3"
   },
   {
-    description: "DOWWWWW",
-    url: "/audio/dow.mp3"
+    description: "I'm not at college",
+    url: "/audio/im not at college.mp3"
   },
   {
-    description: "DOWWWWW",
-    url: "/audio/dow.mp3"
+    description: "Yes",
+    url: "/audio/yes.mp3"
   },
   {
-    description: "DOWWWWW",
-    url: "/audio/dow.mp3"
+    description: "No",
+    url: "/audio/no.mp3"
   },
   {
-    description: "DOWWWWW",
-    url: "/audio/dow.mp3"
+    description: "Probably not",
+    url: "/audio/probably not.mp3"
   },
   {
-    description: "DOWWWWW",
-    url: "/audio/dow.mp3"
+    description: "Heh, isunno",
+    url: "/audio/iunno.mp3"
   },
   {
-    description: "DOWWWWW",
-    url: "/audio/dow.mp3"
+    description: "Shutdown the channel",
+    url: "/audio/shutdown the channel.mp3"
   },
   {
-    description: "DOWWWWW",
-    url: "/audio/dow.mp3"
+    description: "When i was born",
+    url: "/audio/when i was born.mp3"
   },
   {
-    description: "DOWWWWW",
-    url: "/audio/dow.mp3"
+    description: "Yes i would start patreon",
+    url: "/audio/yes i would start patreon.mp3"
   }
 ]
 

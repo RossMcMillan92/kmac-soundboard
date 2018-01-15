@@ -1,5 +1,7 @@
 import React from "react"
 
+const getTranslation = volume => Math.min(Math.round(volume * 15), 15)
+
 const KmacFace = ({ volume }) => (
   <div className="kmac-face">
     <img
@@ -12,7 +14,7 @@ const KmacFace = ({ volume }) => (
       src="/images/kmac-fg.png"
       alt="kmac2021 face fg"
       style={{
-        transform: `translateY(${Math.round(volume * 15)}%)`
+        transform: `translateY(${getTranslation(volume)}%)`
       }}
     />
   </div>

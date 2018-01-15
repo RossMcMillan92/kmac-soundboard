@@ -30,6 +30,7 @@ body {
 
 .audio-button {
   display: flex;
+  align-items: center;
   appearance: none;
   width: 100%;
   margin: 0;
@@ -54,6 +55,7 @@ body {
   font-size: 24px;
   text-align: left;
   padding: var(--base-spacing-unit);
+  margin-left: calc(var(--base-spacing-unit) / 2);
 }
 
 .audio-button.is-playing .audio-button__image,
