@@ -78,7 +78,7 @@
   width: 25%;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 680px) {
   .grid__item--full\@mobile {
     flex: 0 0 100%;
   }

@@ -5,3 +5,8 @@
 .u-mb1 {
   margin-bottom: var(--base-spacing-unit) !important;
 }
+
+.u-flex-row {
+  display: flex !important;
+  flex-direction: row;
+}

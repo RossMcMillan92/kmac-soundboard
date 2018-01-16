@@ -45,7 +45,7 @@ body {
 }
 
 .audio-button__image {
-  width: 100px;
+  width: 80px;
   transition: transform 0.15s ease-out;
   flex-shrink: 0;
 }
@@ -78,4 +78,5 @@ body {
   position: absolute;
   top: 0;
   left: 0;
+  transition: transform 0.05s ease-in-out;
 }

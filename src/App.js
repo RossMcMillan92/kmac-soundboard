@@ -18,7 +18,7 @@ class App extends Component {
           <div className="grid">
             {samples.map(({ description, url }) => (
               <div
-                className="grid__item grid__item--one-half grid__item--full@mobile"
+                className="grid__item grid__item--one-half grid__item--full@mobile u-flex-row"
                 key={description}
               >
                 <AudioButton
