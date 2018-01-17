@@ -3,6 +3,7 @@ import React from "react"
 import ReactDOM from "react-dom"
 
 import "./index.css"
+import "./clean-button.css"
 import "./grid.css"
 import "./utilities.css"
 

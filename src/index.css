@@ -28,7 +28,7 @@ body {
   padding-right: var(--base-spacing-unit);
 }
 
-.audio-button {
+.face-button {
   display: flex;
   align-items: center;
   appearance: none;
@@ -37,20 +37,21 @@ body {
   background-color: #111;
   border: solid 1px #222;
   cursor: pointer;
+  user-select: none;
 }
 
-.audio-button:focus {
+.face-button:focus {
   outline: none;
   border-color: #333;
 }
 
-.audio-button__image {
+.face-button__image {
   width: 80px;
   transition: transform 0.15s ease-out;
   flex-shrink: 0;
 }
 
-.audio-button__text {
+.face-button__text {
   color: #fff;
   font-size: 24px;
   text-align: left;
@@ -58,9 +59,13 @@ body {
   margin-left: calc(var(--base-spacing-unit) / 2);
 }
 
-.audio-button.is-playing .audio-button__image,
-.audio-button:focus .audio-button__image,
-.audio-button:hover .audio-button__image {
+.face-button__text.is-loading {
+  color: #f00;
+}
+
+.face-button.is-playing .face-button__image,
+.face-button:focus .face-button__image,
+.face-button:hover .face-button__image {
   transition: transform 0.5s ease-in-out;
   transform: scale(1.4) rotate(-10deg);
 }
