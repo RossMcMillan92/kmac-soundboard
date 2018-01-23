@@ -1,0 +1,35 @@
+.face-button
+  display: flex
+  align-items: center
+  appearance: none
+  width: 100%
+  margin: 0
+  background-color: #111
+  border: solid 1px #222
+  cursor: pointer
+  user-select: none
+
+.face-button:focus
+  outline: none
+  border-color: #333
+
+.face-button__image
+  width: 80px
+  transition: transform 0.15s ease-out
+  flex-shrink: 0
+
+  .face-button.is-playing &,
+  .face-button:focus &,
+  .face-button:hover &
+    transition: transform 0.5s ease-in-out
+    transform: scale(1.4) rotate(-10deg)
+
+.face-button__text
+  color: #fff
+  font-size: 24px
+  text-align: left
+  padding: var(--base-spacing-unit)
+  margin-left: calc(var(--base-spacing-unit) / 2)
+
+.face-button__text.is-loading
+  color: #f00

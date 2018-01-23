@@ -1,0 +1,18 @@
+:root {
+  --base-spacing-unit: 20px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  font-family: 'Open Sans', sans-serif;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+  background-color: #0d0d0d;
+}
