@@ -1,6 +1,15 @@
-import React, { Component } from 'react'
-import KmacButton from './components/kmacButton'
-import samples from './utils/samples'
+import React, { Component } from "react"
+import { hot } from "react-hot-loader"
+import KmacButton from "./components/kmacButton"
+import samples from "./utils/samples"
+import getAbsolutePath from "./modules/getAbsolutePath"
+import isPhoneGap from "./modules/isPhoneGap"
+
+const absolutePath = getAbsolutePath()
+const getSoundURL = path =>
+  isPhoneGap || true
+    ? `${absolutePath}${path}`
+    : `https://raw.githubusercontent.com/RossMcMillan92/kmac-soundboard/master/src/static/${path}`
 
 class App extends Component {
   state = { currentKeyCodeTriggered: null }
@@ -24,20 +33,23 @@ class App extends Component {
   }
 
   addEventListeners = () => {
-    document.body.addEventListener('keypress', this.maybePlayFromKeyCode)
+    document.body.addEventListener("keypress", this.maybePlayFromKeyCode)
   }
 
   removeEventListeners = () => {
-    document.body.removeEventListener('keypress', this.maybePlayFromKeyCode)
+    document.body.removeEventListener("keypress", this.maybePlayFromKeyCode)
   }
 
   renderButtons = () =>
     samples.map(({ description, url }, index) => {
       const keyCode = 97 + index < 123 ? 97 + index : 999
       return (
-        <div className="grid__item grid__item--one-half grid__item--full@mobile u-flex-row u-mb1" key={description}>
+        <div
+          className="grid__item grid__item--one-half grid__item--full@mobile u-flex-row u-mb1"
+          key={description}
+        >
           <KmacButton
-            src={url}
+            src={getSoundURL(url)}
             keyCodeTrigger={keyCode}
             description={`${description}`}
             audioContext={this.audioContext}
@@ -61,4 +73,4 @@ class App extends Component {
   }
 }
 
-export default App
+export default hot(module)(App)

@@ -1,7 +1,7 @@
-import React, { Component } from 'react'
-import AudioRenderer from './audioRenderer'
-import FaceButton from './faceButton'
-import KmacFace from './kmacFace'
+import React, { Component } from "react"
+import AudioRenderer from "./audioRenderer"
+import ImageButton from "./imageButton"
+import KmacFace from "./kmacFace"
 
 class KmacButton extends Component {
   state = { shouldPlay: false }
@@ -23,14 +23,14 @@ class KmacButton extends Component {
         src={this.props.src}
         shouldPlay={this.state.shouldPlay}
         render={({ isLoading, isPlaying, volume }) => (
-          <FaceButton
-            className={isPlaying ? 'is-playing' : ''}
+          <ImageButton
+            className={isPlaying ? "is-playing" : ""}
             onClick={this.triggerPlay}
-            textClassName={isLoading ? 'is-loading' : ''}
+            textClassName={isLoading ? "is-loading" : ""}
             renderImage={() => <KmacFace volume={volume} />}
           >
             {this.props.description}
-          </FaceButton>
+          </ImageButton>
         )}
       />
     )

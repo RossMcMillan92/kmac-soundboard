@@ -1,5 +1,5 @@
-import { Component } from 'react'
-import { getBufferFromURL, playSound } from '../utils/audio'
+import { Component } from "react"
+import { getBufferFromURL, playSound } from "../utils/audio"
 
 const setState = (context, prop) => value => {
   context.setState({ [prop]: value })
@@ -48,14 +48,14 @@ class AudioRenderer extends Component {
   loadBuffer = (shouldPlay = true) => {
     const { audioContext, src } = this.props
 
-    setState(this, 'isLoading', true)
+    setState(this, "isLoading", true)
     getBufferFromURL(audioContext, src)
       .map(playSound(audioContext, this.analyser))
-      .map(setState(this, 'buffer'))
+      .map(setState(this, "buffer"))
       .fork(
         e => console.log(e),
         buffer => {
-          setState(this, 'isLoading', false)
+          setState(this, "isLoading", false)
           if (shouldPlay) this.playBuffer(buffer)
         }
       )
@@ -89,6 +89,7 @@ class AudioRenderer extends Component {
       ? this.props.render({
           isLoading,
           isPlaying: currentlyPlayingCount !== 0,
+          play: this.playBuffer,
           volume
         })
       : null
