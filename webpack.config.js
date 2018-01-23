@@ -50,7 +50,7 @@ const config = env => {
       alias: {
         react: path.join(cwd, "node_modules/react")
       },
-      modules: ["node_modules", ...modulePaths]
+      modules: [...modulePaths, "node_modules"]
     },
     module: {
       rules: [
