@@ -2,6 +2,7 @@ import React, { Component } from "react"
 import AudioRenderer from "./audioRenderer"
 import ImageButton from "./imageButton"
 import KmacFace from "./kmacFace"
+import { sendClickEvent } from "../modules/tracking"
 
 class KmacButton extends Component {
   state = { shouldPlay: false }
@@ -12,6 +13,7 @@ class KmacButton extends Component {
 
   triggerPlay = () => {
     if (this.state.shouldPlay) return
+    sendClickEvent(this.props.description)
     this.setState({ shouldPlay: true })
     requestAnimationFrame(() => this.setState({ shouldPlay: false }))
   }
