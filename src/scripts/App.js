@@ -91,7 +91,7 @@ class App extends Component {
     })
 
   render = () => (
-    <div className="App">
+    <div className="app">
       {this.state.shouldShowEasterEgg && (
         <FullScreenVideoPlayer
           onClick={this.onClick}
