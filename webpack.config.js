@@ -123,7 +123,10 @@ const config = env => {
     },
     plugins: [
       new webpack.NamedModulesPlugin(),
-      new CopyWebpackPlugin([{ from: "src/static/audio", to: "audio" }]),
+      new CopyWebpackPlugin([
+        { from: "src/static/audio", to: "audio" },
+        { from: "src/static/images/favicons", to: "favicons" }
+      ]),
       new webpack.DefinePlugin({
         NODE_ENV: JSON.stringify(nodeEnv),
         IS_PHONEGAP: JSON.stringify(isPhoneGap),
