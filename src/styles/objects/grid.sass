@@ -3,7 +3,6 @@
   margin: 0 0 0 calc(var(--base-spacing-unit) * -1)
   flex-wrap: wrap
 
-
 .grid__item
   flex: 1
   padding: 0 0 0 var(--base-spacing-unit)
@@ -11,73 +10,63 @@
 .grid__item:focus
   outline: 0
 
-
 .grid--wide
   margin: 0 0 0 -40px
 
 .grid--wide > .grid__item
   padding: 0 0 0 40px
 
-
 .grid--flush
   margin: 0
-
 
 .grid--flush > .grid__item
   padding: 0
 
-
 .grid--top
-  align-items: flex-start;
-
+  align-items: flex-start
 
 .grid--bottom
-  align-items: flex-end;
-
+  align-items: flex-end
 
 .grid--center
-  align-items: center;
-
+  align-items: center
 
 .grid__item--top
-  align-self: flex-start;
-
+  align-self: flex-start
 
 .grid__item--bottom
-  align-self: flex-end;
-
+  align-self: flex-end
 
 .grid__item--center
-  align-self: center;
-
+  align-self: center
 
 .grid__item--auto
-  flex: 0 0 auto;
-
+  flex: 0 0 auto
 
 .grid__item--fit
-  flex: 1;
-
+  flex: 1
 
 .grid__item--full
-  flex: 0 0 100%;
-
+  flex: 0 0 100%
 
 .grid__item--one-half
   flex: 0 0 50%
   width: 50%
 
-
 .grid__item--one-third
   flex: 0 0 33.33333%
   width: 33.33333%
-
 
 .grid__item--one-quarter
   flex: 0 0 25%
   width: 25%
 
+.grid__item--one-half\@gamma
+  @media (max-width: 900px)
+    flex: 0 0 50%
+    width: 50%
 
-.grid__item--full\@mobile
-  @media (max-width: 680px) 
+.grid__item--full\@beta
+  @media (max-width: 540px)
     flex: 0 0 100%
+    width: 100%

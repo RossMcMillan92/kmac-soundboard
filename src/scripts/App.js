@@ -79,7 +79,10 @@ class App extends Component {
       const isAlphabeticalKeycode = 97 + index < 123
       const keyCode = isAlphabeticalKeycode ? 97 + index : 999
       return (
-        <div className="grid__item grid__item--one-half grid__item--full@mobile u-flex-row u-mb1" key={description}>
+        <div
+          className="grid__item grid__item--one-third grid__item--one-half@gamma  grid__item--full@beta u-flex-row u-mb1"
+          key={description}
+        >
           <KmacButton
             src={getSoundURL(url)}
             description={`${description}`}
