@@ -27,7 +27,6 @@ const processPendingAnalyticsEvents = deadline => {
 //    sendGAEvent :: String s : s -> s -> s -> IO gaEvent
 const sendGAEvent = curry((eventCategory, eventAction, eventLabel) =>
   IO(() => {
-    console.log("EVENTCATEGORY, EVENTACTION, EVENTLABEL", eventCategory, eventAction, eventLabel)
     window.ga("send", {
       hitType: "event",
       eventCategory,

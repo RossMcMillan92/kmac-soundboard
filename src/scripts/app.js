@@ -9,7 +9,7 @@ import { sendEasterEggEvent } from "./modules/tracking"
 
 const absolutePath = getAbsolutePath()
 const getSoundURL = path =>
-  isPhoneGap || true
+  isPhoneGap
     ? `${absolutePath}${path}`
     : `https://raw.githubusercontent.com/RossMcMillan92/kmac-soundboard/master/src/static/${path}`
 

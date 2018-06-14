@@ -60,6 +60,12 @@
 	<meta name="apple-mobile-web-app-title" content="Kmac2021 Soundboard">
 	<meta name="format-detection" content="telephone=no">
 
+	<meta http-equiv="Content-Security-Policy"
+	         content="default-src * blob:;
+	                  style-src * 'self' 'unsafe-inline' 'unsafe-eval';
+	                  script-src * 'self' 'unsafe-inline' 'unsafe-eval' data:;
+	                  worker-src * blob: 'self' 'unsafe-inline' 'unsafe-eval';">
+
 	<noscript>
 		<style> .js { display: none !important } </style>
 	</noscript>
