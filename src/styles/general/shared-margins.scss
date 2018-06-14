@@ -1,0 +1,32 @@
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+hgroup,
+blockquote,
+p,
+address,
+ul,
+ol,
+dd,
+table,
+fieldset,
+figure,
+pre,
+hr {
+  margin-top: 0;
+  margin-bottom: var(--base-spacing-unit) / 2;
+}
+
+hr {
+  margin-bottom: var(--base-spacing-unit) - 2px;
+}
+
+ul,
+ol,
+dd {
+  margin-left: var(--base-spacing-unit);
+  margin-bottom: var(--base-spacing-unit);
+}

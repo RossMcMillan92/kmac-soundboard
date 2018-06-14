@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { hot } from 'react-hot-loader'
+import Header from './components/header'
 import KmacButton from './components/kmacButton'
 import samples from './utils/samples'
 import getAbsolutePath from './modules/getAbsolutePath'
@@ -37,7 +38,7 @@ class App extends Component {
 
     if (document.location.search.includes('easter')) {
       setTimeout(() => {
-        this.setState({shouldShowEasterEgg: true})
+        this.setState({ shouldShowEasterEgg: true })
       }, 15000)
     }
   }
@@ -69,7 +70,7 @@ class App extends Component {
   }
 
   onEasterEggEnd = () => {
-    this.setState({ easterEggIsPlaying: false })
+    this.setState({ easterEggIsPlaying: false, shouldShowEasterEgg: false })
     this.maybePlayFromKeyCode({ keyCode: 105 })
   }
 
@@ -99,8 +100,8 @@ class App extends Component {
           onEnded={this.onEasterEggEnd}
         />
       )}
+      <Header />
       <div className="group-capped group-spacing-x">
-        <h1 className="App-title">Kmac2021</h1>
         <div className="grid">{this.renderButtons()}</div>
       </div>
     </div>
