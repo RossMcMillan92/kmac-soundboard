@@ -48,6 +48,7 @@ class AudioRenderer extends Component {
   loadBuffer = (shouldPlay = true) => {
     const { audioContext, src } = this.props
 
+    if (audioContext.resume) audioContext.resume()
     setState(this, 'isLoading', true)
     getBufferFromURL(audioContext, src)
       .map(playSound(audioContext, this.analyser))
