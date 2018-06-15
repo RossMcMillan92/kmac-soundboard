@@ -7,10 +7,10 @@ const samples = [
     description: 'EUUGGHHH',
     url: 'audio/euugghh.mp3'
   },
-  {
-    description: 'AGHHH-HH-HH-H-H-H',
-    url: 'audio/ahhh.mp3'
-  },
+  // {
+  //   description: 'AGHHH-HH-HH-H-H-H',
+  //   url: 'audio/ahhh.mp3'
+  // },
   {
     description: 'ARGHHH!',
     url: 'audio/argh.mp3'
