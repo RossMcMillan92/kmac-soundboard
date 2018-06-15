@@ -73,7 +73,7 @@ class App extends Component {
 
   onEasterEggEnd = () => {
     this.setState({ easterEggIsPlaying: false, shouldShowEasterEgg: false })
-    this.maybePlayFromKeyCode({ keyCode: 105 })
+    this.maybePlayFromKeyCode({ keyCode: 104 })
   }
 
   renderButtons = () =>
