@@ -3,6 +3,7 @@ import { hot } from 'react-hot-loader'
 import Header from './components/header'
 import KmacButton from './components/kmacButton'
 import samples from './utils/samples'
+import AudioContext from './utils/audioContext'
 import getAbsolutePath from './modules/getAbsolutePath'
 import isPhoneGap from './modules/isPhoneGap'
 import { sendEasterEggEvent } from './modules/tracking'
@@ -30,7 +31,7 @@ class App extends Component {
   state = { currentKeyCodeTriggered: null, easterEggIsPlaying: false, shouldShowEasterEgg: false }
 
   componentWillMount = () => {
-    this.audioContext = new AudioContext()
+    this.audioContext = AudioContext
   }
 
   componentDidMount = () => {

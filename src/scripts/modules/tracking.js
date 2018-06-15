@@ -7,7 +7,11 @@ let isRequestIdleCallbackScheduled
 const schedulePendingEvents = () => {
   if (isRequestIdleCallbackScheduled) return
   isRequestIdleCallbackScheduled = true
-  requestIdleCallback(processPendingAnalyticsEvents)
+  if (window.requestIdleCallback) {
+    window.requestIdleCallback(processPendingAnalyticsEvents)
+  } else {
+    window.requestAnimationFrame(() => processPendingAnalyticsEvents({ timeRemaining: () => 0 }))
+  }
 }
 
 const processPendingAnalyticsEvents = (deadline) => {
