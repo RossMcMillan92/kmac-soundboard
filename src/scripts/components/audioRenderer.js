@@ -1,7 +1,7 @@
-import { Component } from "react"
-import { getBufferFromURL, playSound } from "../utils/audio"
+import { Component } from 'react'
+import { getBufferFromURL, playSound } from '../utils/audio'
 
-const setState = (context, prop) => value => {
+const setState = (context, prop) => (value) => {
   context.setState({ [prop]: value })
   return value
 }
@@ -11,18 +11,18 @@ class AudioRenderer extends Component {
 
   componentDidMount = () => {
     this.volume = []
-    this.analyser = this.props.audioContext.createScriptProcessor(1024, 1, 1)
+    this.analyser = this.props.audioContext.createScriptProcessor(8192, 1, 1)
     this.analyser.onaudioprocess = this.onAudioProcess
     if (this.props.preload === true) this.loadBuffer(false)
   }
 
-  componentWillUpdate = nextProps => {
+  componentWillUpdate = (nextProps) => {
     if (!this.props.shouldPlay && nextProps.shouldPlay) {
       this.loadAndPlayCurrentBuffer()
     }
   }
 
-  onAudioProcess = e => {
+  onAudioProcess = (e) => {
     for (let i = 0, len = e.outputBuffer.numberOfChannels; i < len; i++) {
       const out = e.outputBuffer.getChannelData(i)
       const int = e.inputBuffer.getChannelData(i)
@@ -30,7 +30,7 @@ class AudioRenderer extends Component {
 
       let maxVolume = 0
       for (let x = 0, len2 = int.length; x < len2; x++) {
-        out[x] = int[x] //prevent feedback and we only need the input data
+        out[x] = int[x] // prevent feedback and we only need the input data
         maxVolume = int[x] > maxVolume ? int[x] : maxVolume
       }
       this.volume[i] = maxVolume
@@ -48,20 +48,20 @@ class AudioRenderer extends Component {
   loadBuffer = (shouldPlay = true) => {
     const { audioContext, src } = this.props
 
-    setState(this, "isLoading", true)
+    setState(this, 'isLoading', true)
     getBufferFromURL(audioContext, src)
       .map(playSound(audioContext, this.analyser))
-      .map(setState(this, "buffer"))
+      .map(setState(this, 'buffer'))
       .fork(
         e => console.log(e),
-        buffer => {
-          setState(this, "isLoading", false)
+        (buffer) => {
+          setState(this, 'isLoading', false)
           if (shouldPlay) this.playBuffer(buffer)
         }
       )
   }
 
-  playBuffer = buffer => {
+  playBuffer = (buffer) => {
     this.setState(state => ({
       currentlyPlayingCount: state.currentlyPlayingCount + 1
     }))

@@ -1,11 +1,11 @@
-import React, { Component } from "react"
-import { hot } from "react-hot-loader"
-import Header from "./components/header"
-import KmacButton from "./components/kmacButton"
-import samples from "./utils/samples"
-import getAbsolutePath from "./modules/getAbsolutePath"
-import isPhoneGap from "./modules/isPhoneGap"
-import { sendEasterEggEvent } from "./modules/tracking"
+import React, { Component, Fragment } from 'react'
+import { hot } from 'react-hot-loader'
+import Header from './components/header'
+import KmacButton from './components/kmacButton'
+import samples from './utils/samples'
+import getAbsolutePath from './modules/getAbsolutePath'
+import isPhoneGap from './modules/isPhoneGap'
+import { sendEasterEggEvent } from './modules/tracking'
 
 const absolutePath = getAbsolutePath()
 const getSoundURL = path =>
@@ -13,12 +13,14 @@ const getSoundURL = path =>
     ? `${absolutePath}${path}`
     : `https://raw.githubusercontent.com/RossMcMillan92/kmac-soundboard/master/src/static/${path}`
 
-import EasterEggUrl from "static/videos/easter-v8.webm"
+import EasterEggUrl from 'static/videos/easter-v8.webm'
 
-const FullScreenVideoPlayer = ({ onClick, onEnded, play, src }) => (
+const FullScreenVideoPlayer = ({
+ onClick, onEnded, play, src
+}) => (
   <div
     onClick={onClick}
-    className={`full-screen-video ${onClick ? "" : "u-is-hidden"} ${play ? "" : "u-is-invisible"}`}
+    className={`full-screen-video ${onClick ? '' : 'u-is-hidden'} ${play ? '' : 'u-is-invisible'}`}
   >
     <video className="full-screen-video__video" src={play ? src : null} autoPlay={play} onEnded={onEnded} />
   </div>
@@ -34,7 +36,7 @@ class App extends Component {
   componentDidMount = () => {
     this.addEventListeners()
 
-    if (document.location.search.includes("easter")) {
+    if (document.location.search.includes('easter')) {
       setTimeout(() => {
         this.setState({ shouldShowEasterEgg: true })
       }, 10000)
@@ -45,22 +47,22 @@ class App extends Component {
     this.removeEventListeners()
   }
 
-  maybePlayFromKeyCode = e => {
+  maybePlayFromKeyCode = (e) => {
     if (this.state.currentKeyCodeTriggered) return
     this.setState({ currentKeyCodeTriggered: e.keyCode })
     setTimeout(() => this.setState({ currentKeyCodeTriggered: null }), 100)
   }
 
   addEventListeners = () => {
-    document.body.addEventListener("keypress", this.maybePlayFromKeyCode)
+    document.body.addEventListener('keypress', this.maybePlayFromKeyCode)
   }
 
   removeEventListeners = () => {
-    document.body.removeEventListener("keypress", this.maybePlayFromKeyCode)
+    document.body.removeEventListener('keypress', this.maybePlayFromKeyCode)
   }
 
-  onClick = e => {
-    if (!this.state.easterEggIsPlaying) sendEasterEggEvent("EASTER EGG")
+  onClick = (e) => {
+    if (!this.state.easterEggIsPlaying) sendEasterEggEvent('EASTER EGG')
     this.startEasterEgg()
   }
 
@@ -93,7 +95,7 @@ class App extends Component {
     })
 
   render = () => (
-    <div className="app">
+    <Fragment>
       {this.state.shouldShowEasterEgg && (
         <FullScreenVideoPlayer
           onClick={this.onClick}
@@ -106,7 +108,7 @@ class App extends Component {
       <div className="group-capped group-spacing-x">
         <div className="grid">{this.renderButtons()}</div>
       </div>
-    </div>
+    </Fragment>
   )
 }
 
