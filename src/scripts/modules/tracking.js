@@ -1,6 +1,5 @@
-import { IO } from "ramda-fantasy"
-
-import { compose, curry } from "ramda"
+import { IO } from 'ramda-fantasy'
+import { compose, curry } from 'ramda'
 
 const eventQueue = []
 
@@ -11,7 +10,7 @@ const schedulePendingEvents = () => {
   requestIdleCallback(processPendingAnalyticsEvents)
 }
 
-const processPendingAnalyticsEvents = deadline => {
+const processPendingAnalyticsEvents = (deadline) => {
   isRequestIdleCallbackScheduled = false
 
   // Go for as long as there is time remaining and work to do.
@@ -27,23 +26,31 @@ const processPendingAnalyticsEvents = deadline => {
 //    sendGAEvent :: String s : s -> s -> s -> IO gaEvent
 const sendGAEvent = curry((eventCategory, eventAction, eventLabel) =>
   IO(() => {
-    window.ga("send", {
-      hitType: "event",
+    window.ga('send', {
+      hitType: 'event',
       eventCategory,
       eventAction,
-      ...(eventLabel !== "" ? { eventLabel } : {})
+      ...(eventLabel !== '' ? { eventLabel } : {})
     })
-  })
-)
+  }))
 
 //    addGAEventToQueue :: IO gaEvent -> ()
-const addGAEventToQueue = compose(schedulePendingEvents, event => eventQueue.push(event))
+const addGAEventToQueue = compose(
+  schedulePendingEvents,
+  event => eventQueue.push(event)
+)
 
 //    sendGeneralEvent :: eventAction -> eventLabel -> IO gaEvent
-const sendGeneralEvent = sendGAEvent("General")
+const sendGeneralEvent = sendGAEvent('General')
 
 //    sendGenerateEvent :: label -> IO gaEvent
-export const sendClickEvent = compose(addGAEventToQueue, sendGeneralEvent("click"))
+export const sendClickEvent = compose(
+  addGAEventToQueue,
+  sendGeneralEvent('click')
+)
 
 //    sendEasterEggEvent :: label -> IO gaEvent
-export const sendEasterEggEvent = compose(addGAEventToQueue, sendGeneralEvent("easter"))
+export const sendEasterEggEvent = compose(
+  addGAEventToQueue,
+  sendGeneralEvent('easter')
+)
