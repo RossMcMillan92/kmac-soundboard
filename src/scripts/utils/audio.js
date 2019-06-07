@@ -38,14 +38,8 @@ const getPitchPlaybackRatio = pitchAmount => {
   return pitchIsPositive ? 1 / val : val
 }
 
-const playSoundAdvanced = (
-  context,
-  buffer,
-  time,
-  duration,
-  analyser,
-  pitchAmount = 0
-) => {
+const playSoundAdvanced = (context, buffer, time, duration, analyser, pitchAmount = 0) => {
+  console.log("playing!")
   if (!buffer) return
 
   const source = context.createBufferSource()
@@ -58,6 +52,7 @@ const playSoundAdvanced = (
   source.buffer = buffer
 
   source.start(time, 0, duration * durationMultiplier)
+  console.log("started")
   return source
 }
 
